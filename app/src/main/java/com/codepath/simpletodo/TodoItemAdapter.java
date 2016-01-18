@@ -23,14 +23,9 @@ public class TodoItemAdapter extends ArrayAdapter<TodoItem> {
         }
 
         TextView tvDescription = (TextView) convertView.findViewById(R.id.tvDescription);
-        TextView tvCritical = (TextView) convertView.findViewById(R.id.tvCritical);
+        TextView tvDueDate = (TextView) convertView.findViewById(R.id.tvDueDate);
         tvDescription.setText(item.description);
-        if (item.critical != 0) {
-            tvCritical.setText("!");
-        }
-        else {
-            tvCritical.setText("");
-        }
+        tvDueDate.setText(item.dueDate);
         return convertView;
     }
 }

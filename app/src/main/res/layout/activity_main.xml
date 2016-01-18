@@ -12,23 +12,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="Add New Task"
         android:onClick="onAddItem"
         android:id="@+id/btnAddItem"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/etNewItem"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/btnAddItem"
-        android:inputType="none"
-        android:hint="Add new item" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -36,6 +25,5 @@
         android:id="@+id/lvItems"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/etNewItem" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
