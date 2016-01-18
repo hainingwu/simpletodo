@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.ToggleButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class EditItemActivity extends AppCompatActivity {
     Spinner monSpinner;
     Spinner daySpinner;
     Spinner yearSpinner;
+    ToggleButton criticalToggleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,11 @@ public class EditItemActivity extends AppCompatActivity {
         setMonSpinner();
         setDaySpinner();
         setYearSpinner();
+
+        // Critical
+        int critical = getIntent().getIntExtra("item_critical", 0);
+        criticalToggleButton = (ToggleButton) findViewById(R.id.tbCritical);
+        criticalToggleButton.setChecked(critical != 0);
     }
 
     private void setMonSpinner() {
@@ -135,9 +142,15 @@ public class EditItemActivity extends AppCompatActivity {
         int selectedMon = monSpinner.getSelectedItemPosition() + 1;
         int selectedDay = daySpinner.getSelectedItemPosition() + 1;
         String dueDate = String.format("%4d-%02d-%02d", selectedYear, selectedMon, selectedDay);
+        int critical = 0;
+        if (criticalToggleButton.isChecked()) {
+            critical = 1;
+        }
+
         Intent data = new Intent();
         data.putExtra("item_description", etItem.getText().toString());
         data.putExtra("item_due_date", dueDate.toString());
+        data.putExtra("item_critical", critical);
         setResult(RESULT_OK, data);
         finish();
     }

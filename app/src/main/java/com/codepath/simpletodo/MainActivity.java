@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
             requestCode = EDIT_ITEM_ACTIVITY_REQUEST_UPDATE;
             i.putExtra("item_description", item.description);
             i.putExtra("item_due_date", item.dueDate);
+            i.putExtra("item_critical", item.critical);
         }
         startActivityForResult(i, requestCode);
     }
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
             TodoItem item = new TodoItem();
             item.description = data.getStringExtra("item_description");
             item.dueDate = data.getStringExtra("item_due_date");
-            item.critical = 1;
+            item.critical = data.getIntExtra("item_critical", 0);
             if (requestCode == EDIT_ITEM_ACTIVITY_REQUEST_ADD) {
                 item.id = databaseHelper.addTodoItem(item);
                 items.add(item);

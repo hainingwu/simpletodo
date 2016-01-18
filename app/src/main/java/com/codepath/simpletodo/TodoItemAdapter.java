@@ -1,6 +1,7 @@
 package com.codepath.simpletodo;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,16 @@ public class TodoItemAdapter extends ArrayAdapter<TodoItem> {
 
         TextView tvDescription = (TextView) convertView.findViewById(R.id.tvDescription);
         TextView tvDueDate = (TextView) convertView.findViewById(R.id.tvDueDate);
+        TextView tvCritical = (TextView) convertView.findViewById(R.id.tvCritical);
         tvDescription.setText(item.description);
         tvDueDate.setText(item.dueDate);
+        if (item.critical != 0) {
+            tvCritical.setText("HIGH");
+            tvCritical.setTextColor(Color.RED);
+        }
+        else {
+            tvCritical.setText("");
+        }
         return convertView;
     }
 }
